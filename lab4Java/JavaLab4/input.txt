@@ -1,1 +1,4 @@
-Mazanik 8 Math analize
+3
+Mazanik 4 Math analize
+Komrakov 4 Linal algebra
+Pazura 8 Professional programming
