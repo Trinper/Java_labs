@@ -1,4 +1,9 @@
+1
+Frolov 2223115 3
 3
+Mazanik 6 Math analize
+Komrakov 7 Linal algebra
+Karpa 6 programming
+2
 Mazanik 4 Math analize
-Komrakov 4 Linal algebra
-Pazura 8 Professional programming
+Pazura 8 profess programming

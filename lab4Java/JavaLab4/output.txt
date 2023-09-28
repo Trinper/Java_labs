@@ -1,12 +1,24 @@
+1
+Exam Name: Math analize 
+Teacher name: Mazanik
+Exam result: 6
+
+Exam Name: Linal algebra 
+Teacher name: Komrakov
+Exam result: 7
+
+Exam Name: programming 
+Teacher name: Karpa
+Exam result: 6
+
+
+2
 Exam Name: Math analize 
 Teacher name: Mazanik
 Exam result: 4
 
-Exam Name: Linal algebra 
-Teacher name: Komrakov
-Exam result: 4
-
-Exam Name: Professional programming 
+Exam Name: profess programming 
 Teacher name: Pazura
 Exam result: 8
+
 
