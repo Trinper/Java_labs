@@ -1,24 +1,14 @@
 1
-Exam Name: Math analize 
-Teacher name: Mazanik
-Exam result: 6
-
-Exam Name: Linal algebra 
-Teacher name: Komrakov
-Exam result: 7
-
-Exam Name: programming 
-Teacher name: Karpa
-Exam result: 6
-
+Student Name: Frolov Student ID: 2223115	Exam Name: Math analize 	Teacher name: Mazanik	Exam result: 6
+Student Name: Frolov Student ID: 2223115	Exam Name: Linal algebra 	Teacher name: Komrakov	Exam result: 7
+Student Name: Frolov Student ID: 2223115	Exam Name: programming 	Teacher name: Karpa	Exam result: 6
+Student Name: Kadakov Student ID: 2223108	Exam Name: History 	Teacher name: Lebedeva	Exam result: 8
+Student Name: Kadakov Student ID: 2223108	Exam Name: Linal algebra 	Teacher name: Komrakov	Exam result: 2
+Student Name: Kadakov Student ID: 2223108	Exam Name: programming 	Teacher name: Karpa	Exam result: 6
 
 2
-Exam Name: Math analize 
-Teacher name: Mazanik
-Exam result: 4
-
-Exam Name: profess programming 
-Teacher name: Pazura
-Exam result: 8
-
+Student Name: Frolov Student ID: 2223115	Exam Name: Math analize 	Teacher name: Mazanik	Exam result: 4
+Student Name: Frolov Student ID: 2223115	Exam Name: profess programming 	Teacher name: Pazura	Exam result: 8
+Student Name: Kadakov Student ID: 2223108	Exam Name: Math analize 	Teacher name: Mazanik	Exam result: 4
+Student Name: Kadakov Student ID: 2223108	Exam Name: Math logic 	Teacher name: Volochkova	Exam result: 5
 

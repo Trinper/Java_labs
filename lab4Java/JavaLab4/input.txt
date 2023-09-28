@@ -1,4 +1,4 @@
-1
+2
 Frolov 2223115 3
 3
 Mazanik 6 Math analize
@@ -7,3 +7,11 @@ Karpa 6 programming
 2
 Mazanik 4 Math analize
 Pazura 8 profess programming
+Kadakov 2223108 3
+3
+Lebedeva 8 History
+Komrakov 2 Linal algebra
+Karpa 6 programming
+2
+Mazanik 4 Math analize
+Volochkova 5 Math logic

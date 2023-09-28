@@ -40,7 +40,7 @@ class GradeBook {
         this.sessions.add(session);
     }
 
-    public void gradeBookReader(Scanner in, FileReader fr, FileWriter fw) throws Exception {
+    public void gradeBookReader(Scanner in, FileReader fr) throws Exception {
         String line = in.nextLine();
         String[] words = line.split(" ");
         String _studentName = words[0];
@@ -51,17 +51,18 @@ class GradeBook {
         setStudentYear(_studentYear);
         for (int i = 0; i < getStudentYear() - 1; i++){
             Session session = new Session();
-            session.sessionReader(in, fr, fw);
+            session.sessionReader(in, fr);
+            session.setNumOfSession(i + 1);
             addSession(session);
         }
     }
 
-    public void gradeBookWriter(FileWriter fw, Scanner in) throws Exception {
-        for (int i = 0; i < getStudentYear() - 1; i++) {
-            fw.write(Integer.toString(i + 1) + "\n");
-            Session currentSession = sessions.get(i);
-            currentSession.sessionWriter(fw, in);
-            fw.write('\n');
+    public void gradeBookWriter(FileWriter fw, Scanner in, int numOfSession) throws Exception {
+
+        Session session = sessions.get(numOfSession - 1);
+        for (int i = 0; i < session.numOfExams; i++) {
+            fw.write("Student Name: " + getStudentName() + " Student ID: " + getStudentID() + '\t');
+            session.sessionWriter(fw, in, i);
         }
     }
     class Session {
@@ -95,7 +96,7 @@ class GradeBook {
             exams.add(_exam);
         }
 
-        public void sessionReader(Scanner in, FileReader fr, FileWriter fw) throws Exception {
+        public void sessionReader(Scanner in, FileReader fr) throws Exception {
             setNumOfExams(Integer.parseInt(in.nextLine()));
             for (int i = 0; i < getNumOfExams(); i++) {
                 Exam exam = new Exam();
@@ -104,12 +105,8 @@ class GradeBook {
             }
         }
 
-        public void sessionWriter(FileWriter fw, Scanner in) throws Exception {
-
-            for (int i = 0; i < getNumOfExams(); i++) {
-                exams.get(i).examWriter(fw, in);
-                fw.write('\n');
-            }
+        public void sessionWriter(FileWriter fw, Scanner in, int num) throws Exception {
+                exams.get(num).examWriter(fw, in);
         }
 
         class Exam {
@@ -169,21 +166,53 @@ class GradeBook {
             }
 
             public void examWriter(FileWriter fw, Scanner in) throws Exception {
-                fw.write("Exam Name: " + getExamName() + '\n' + "Teacher name: " + getTeacherName() + '\n' + "Exam result: " + getExamResult() + '\n');
+                fw.write("Exam Name: " + getExamName() + '\t' + "Teacher name: " + getTeacherName() + '\t' + "Exam result: " + getExamResult() + '\n');
             }
         }
     }
 }
 
 public class Main {
+    public static void Reader(Scanner in, FileReader fr, int numOfStudent, Vector <GradeBook> gradeBooks) throws Exception {
+        for (int i = 0; i < numOfStudent; i++) {
+            GradeBook gradeBook = new GradeBook();
+            gradeBook.gradeBookReader(in, fr);
+            gradeBooks.add(gradeBook);
+        }
+    }
+    public static int MaxYear(int numOfStudent, Vector <GradeBook> gradeBooks){
+        int maxYear = 1;
+        for (int i = 0; i < numOfStudent; i++) {
+            maxYear = Math.max(maxYear, gradeBooks.get(i).getStudentYear());
+        }
+        return  maxYear;
+    }
+    public static void Writer(Scanner in, FileWriter fw, int numOfStudent, Vector <GradeBook> gradeBooks, int maxYear) throws Exception{
+        int count = 1;
+        while (count <= maxYear - 1){
+            fw.write(Integer.toString(count) + '\n');
+            for (int i = 0; i < numOfStudent; i++) {
+                GradeBook gradeBook = gradeBooks.get(i);
+                for (int j = 0; j < gradeBook.getStudentYear() - 1; j++){
+                    GradeBook.Session session = gradeBook.sessions.get(j);
+                    if (session.getNumOfSession() == count){
+                        gradeBook.gradeBookWriter(fw, in, count);
+                    }
+                }
+            }
+            fw.write('\n');
+            count += 1;
+        }
+    }
     public static void main(String[] args) throws Exception {
         FileWriter fw = new FileWriter("output.txt");
         FileReader fr = new FileReader("input.txt");
         Scanner in = new Scanner(fr);
         int numOfStudent = Integer.parseInt(in.nextLine());
-        GradeBook gradeBook = new GradeBook();
-        gradeBook.gradeBookReader(in, fr, fw);
-        gradeBook.gradeBookWriter(fw, in);
+        Vector <GradeBook> gradeBooks = new Vector<>(numOfStudent);
+        Reader(in, fr, numOfStudent, gradeBooks);
+        int maxYear = MaxYear(numOfStudent, gradeBooks);
+        Writer(in, fw, numOfStudent, gradeBooks, maxYear);
         fr.close();
         fw.close();
     }
