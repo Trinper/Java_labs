@@ -1,17 +1,26 @@
-2
+3
 Frolov 2223115 3
 3
-Mazanik 6 Math analize
-Komrakov 7 Linal algebra
-Karpa 6 programming
+Mazanik 6 Calculus
+Komrakov 7 High algebra
+Karpa 6 Programming
 2
-Mazanik 4 Math analize
-Pazura 8 profess programming
+Mazanik 4 Calculus
+Pazura 8 Industrial programming
 Kadakov 2223108 3
 3
 Lebedeva 8 History
-Komrakov 2 Linal algebra
+Komrakov 2 hiGh aLgebra
 Karpa 6 programming
 2
-Mazanik 4 Math analize
+Mazanik 4 Calculus
 Volochkova 5 Math logic
+Katok 2222712 3
+4
+Vaskovsky 8 Calculus
+Razmislovich 7 high algebra
+Lebedeva 8 HiStory
+Kazantseva 10 programming
+2
+Vaskovsky 9 Calculus
+Razmislovich 9 linear algebra

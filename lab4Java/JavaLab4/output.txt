@@ -1,14 +1,34 @@
-1
-Student Name: Frolov Student ID: 2223115	Exam Name: Math analize 	Teacher name: Mazanik	Exam result: 6
-Student Name: Frolov Student ID: 2223115	Exam Name: Linal algebra 	Teacher name: Komrakov	Exam result: 7
-Student Name: Frolov Student ID: 2223115	Exam Name: programming 	Teacher name: Karpa	Exam result: 6
-Student Name: Kadakov Student ID: 2223108	Exam Name: History 	Teacher name: Lebedeva	Exam result: 8
-Student Name: Kadakov Student ID: 2223108	Exam Name: Linal algebra 	Teacher name: Komrakov	Exam result: 2
-Student Name: Kadakov Student ID: 2223108	Exam Name: programming 	Teacher name: Karpa	Exam result: 6
+Session number: 1
+Exam Name: calculus 
+Student Name: Frolov Student ID: 2223115	Teacher name: Mazanik	Exam result: 6
+Student Name: Katok Student ID: 2222712	Teacher name: Vaskovsky	Exam result: 8
 
-2
-Student Name: Frolov Student ID: 2223115	Exam Name: Math analize 	Teacher name: Mazanik	Exam result: 4
-Student Name: Frolov Student ID: 2223115	Exam Name: profess programming 	Teacher name: Pazura	Exam result: 8
-Student Name: Kadakov Student ID: 2223108	Exam Name: Math analize 	Teacher name: Mazanik	Exam result: 4
-Student Name: Kadakov Student ID: 2223108	Exam Name: Math logic 	Teacher name: Volochkova	Exam result: 5
+Exam Name: high algebra 
+Student Name: Frolov Student ID: 2223115	Teacher name: Komrakov	Exam result: 7
+Student Name: Kadakov Student ID: 2223108	Teacher name: Komrakov	Exam result: 2
+Student Name: Katok Student ID: 2222712	Teacher name: Razmislovich	Exam result: 7
+
+Exam Name: programming 
+Student Name: Frolov Student ID: 2223115	Teacher name: Karpa	Exam result: 6
+Student Name: Kadakov Student ID: 2223108	Teacher name: Karpa	Exam result: 6
+Student Name: Katok Student ID: 2222712	Teacher name: Kazantseva	Exam result: 10
+
+Exam Name: history 
+Student Name: Kadakov Student ID: 2223108	Teacher name: Lebedeva	Exam result: 8
+Student Name: Katok Student ID: 2222712	Teacher name: Lebedeva	Exam result: 8
+
+Session number: 2
+Exam Name: calculus 
+Student Name: Frolov Student ID: 2223115	Teacher name: Mazanik	Exam result: 4
+Student Name: Kadakov Student ID: 2223108	Teacher name: Mazanik	Exam result: 4
+Student Name: Katok Student ID: 2222712	Teacher name: Vaskovsky	Exam result: 9
+
+Exam Name: industrial programming 
+Student Name: Frolov Student ID: 2223115	Teacher name: Pazura	Exam result: 8
+
+Exam Name: math logic 
+Student Name: Kadakov Student ID: 2223108	Teacher name: Volochkova	Exam result: 5
+
+Exam Name: linear algebra 
+Student Name: Katok Student ID: 2222712	Teacher name: Razmislovich	Exam result: 9
 

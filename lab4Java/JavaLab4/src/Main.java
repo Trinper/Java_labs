@@ -1,6 +1,6 @@
-import javax.swing.text.DefaultHighlighter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -57,12 +57,13 @@ class GradeBook {
         }
     }
 
-    public void gradeBookWriter(FileWriter fw, Scanner in, int numOfSession) throws Exception {
-
+    public void gradeBookWriter(FileWriter fw, Scanner in, int numOfSession, String name) throws Exception {
         Session session = sessions.get(numOfSession - 1);
-        for (int i = 0; i < session.numOfExams; i++) {
-            fw.write("Student Name: " + getStudentName() + " Student ID: " + getStudentID() + '\t');
-            session.sessionWriter(fw, in, i);
+        for (int i = 0; i < session.getNumOfExams(); i++) {
+            if (Objects.equals(session.exams.get(i).getExamName().toLowerCase(), name)) {
+                fw.write("Student Name: " + getStudentName() + " Student ID: " + getStudentID() + '\t');
+                session.sessionWriter(fw, in, i);
+            }
         }
     }
     class Session {
@@ -157,7 +158,7 @@ class GradeBook {
                 int _examResult = Integer.parseInt(words[1]);
                 StringBuilder _examName = new StringBuilder();
                 for (int i = 2; i < words.length; i++) {
-                    _examName.append(words[i] + " ");
+                    _examName.append(words[i].toLowerCase() + " ");
                 }
 
                 setExamName(_examName.toString());
@@ -166,7 +167,7 @@ class GradeBook {
             }
 
             public void examWriter(FileWriter fw, Scanner in) throws Exception {
-                fw.write("Exam Name: " + getExamName() + '\t' + "Teacher name: " + getTeacherName() + '\t' + "Exam result: " + getExamResult() + '\n');
+                fw.write(  "Teacher name: " + getTeacherName() + '\t' + "Exam result: " + getExamResult() + '\n');
             }
         }
     }
@@ -187,20 +188,38 @@ public class Main {
         }
         return  maxYear;
     }
+    public static void nameOfExams(Vector <GradeBook> gradeBooks,int numOfStudent, int numOfSessions, Vector <String> namesOfExams){
+        for (int i = 0; i < numOfStudent; i++){
+            GradeBook gradeBook = gradeBooks.get(i);
+            GradeBook.Session session = gradeBook.sessions.get(numOfSessions);
+            for (int j = 0; j < session.getNumOfExams(); j++){
+                String examName = session.exams.get(j).getExamName().toLowerCase();
+                if (!namesOfExams.contains(examName)){
+                    namesOfExams.add(session.exams.get(j).getExamName());
+                }
+            }
+        }
+    }
     public static void Writer(Scanner in, FileWriter fw, int numOfStudent, Vector <GradeBook> gradeBooks, int maxYear) throws Exception{
         int count = 1;
         while (count <= maxYear - 1){
-            fw.write(Integer.toString(count) + '\n');
-            for (int i = 0; i < numOfStudent; i++) {
-                GradeBook gradeBook = gradeBooks.get(i);
-                for (int j = 0; j < gradeBook.getStudentYear() - 1; j++){
-                    GradeBook.Session session = gradeBook.sessions.get(j);
-                    if (session.getNumOfSession() == count){
-                        gradeBook.gradeBookWriter(fw, in, count);
+            Vector <String> namesOfExams = new Vector<>();
+            nameOfExams(gradeBooks, numOfStudent, count - 1, namesOfExams);
+            fw.write("Session number: " +Integer.toString(count) + '\n');
+            for (int names = 0; names < namesOfExams.size(); names++) {
+                String nameOfExam = namesOfExams.get(names).toLowerCase();
+                fw.write("Exam Name: " + nameOfExam + '\n');
+                for (int i = 0; i < numOfStudent; i++) {
+                    GradeBook gradeBook = gradeBooks.get(i);
+                    for (int j = 0; j < gradeBook.getStudentYear() - 1; j++) {
+                        GradeBook.Session session = gradeBook.sessions.get(j);
+                        if (session.getNumOfSession() == count) {
+                            gradeBook.gradeBookWriter(fw, in, count, nameOfExam);
+                        }
                     }
                 }
+                fw.write('\n');
             }
-            fw.write('\n');
             count += 1;
         }
     }
