@@ -1,5 +1,5 @@
 3
-Frolov 2223115 3
+Frolov 2223115 4
 3
 Mazanik 6 Calculus
 Komrakov 7 High algebra
@@ -7,6 +7,8 @@ Karpa 6 Programming
 2
 Mazanik 4 Calculus
 Pazura 8 Industrial programming
+1
+Semenchenko 10 operation systems
 Kadakov 2223108 3
 3
 Lebedeva 8 History

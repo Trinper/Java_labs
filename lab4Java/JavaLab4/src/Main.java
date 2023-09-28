@@ -158,7 +158,7 @@ class GradeBook {
                 int _examResult = Integer.parseInt(words[1]);
                 StringBuilder _examName = new StringBuilder();
                 for (int i = 2; i < words.length; i++) {
-                    _examName.append(words[i].toLowerCase() + " ");
+                    _examName.append(words[i].toLowerCase()).append(" ");
                 }
 
                 setExamName(_examName.toString());
@@ -191,11 +191,13 @@ public class Main {
     public static void nameOfExams(Vector <GradeBook> gradeBooks,int numOfStudent, int numOfSessions, Vector <String> namesOfExams){
         for (int i = 0; i < numOfStudent; i++){
             GradeBook gradeBook = gradeBooks.get(i);
-            GradeBook.Session session = gradeBook.sessions.get(numOfSessions);
-            for (int j = 0; j < session.getNumOfExams(); j++){
-                String examName = session.exams.get(j).getExamName().toLowerCase();
-                if (!namesOfExams.contains(examName)){
-                    namesOfExams.add(session.exams.get(j).getExamName());
+            if (numOfSessions <= gradeBook.getStudentYear() - 2) {
+                GradeBook.Session session = gradeBook.sessions.get(numOfSessions);
+                for (int j = 0; j < session.getNumOfExams(); j++) {
+                    String examName = session.exams.get(j).getExamName().toLowerCase();
+                    if (!namesOfExams.contains(examName)) {
+                        namesOfExams.add(session.exams.get(j).getExamName());
+                    }
                 }
             }
         }
@@ -205,9 +207,9 @@ public class Main {
         while (count <= maxYear - 1){
             Vector <String> namesOfExams = new Vector<>();
             nameOfExams(gradeBooks, numOfStudent, count - 1, namesOfExams);
-            fw.write("Session number: " +Integer.toString(count) + '\n');
-            for (int names = 0; names < namesOfExams.size(); names++) {
-                String nameOfExam = namesOfExams.get(names).toLowerCase();
+            fw.write("Session number: " + count + '\n');
+            for (String namesOfExam : namesOfExams) {
+                String nameOfExam = namesOfExam.toLowerCase();
                 fw.write("Exam Name: " + nameOfExam + '\n');
                 for (int i = 0; i < numOfStudent; i++) {
                     GradeBook gradeBook = gradeBooks.get(i);

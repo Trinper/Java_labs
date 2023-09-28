@@ -32,3 +32,7 @@ Student Name: Kadakov Student ID: 2223108	Teacher name: Volochkova	Exam result: 
 Exam Name: linear algebra 
 Student Name: Katok Student ID: 2222712	Teacher name: Razmislovich	Exam result: 9
 
+Session number: 3
+Exam Name: operation systems 
+Student Name: Frolov Student ID: 2223115	Teacher name: Semenchenko	Exam result: 10
+
