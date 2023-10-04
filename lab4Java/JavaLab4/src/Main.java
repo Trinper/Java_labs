@@ -59,22 +59,32 @@ class GradeBook {
 
     public void gradeBookWriter(FileWriter fw, Scanner in, int numOfSession, String name) throws Exception {
         Session session = sessions.get(numOfSession - 1);
+        for (int i = 0; i < session.getNumOfCredits(); i++){
+            if (Objects.equals(session.credits.get(i).getCreditName().toLowerCase(), name)) {
+                fw.write("Student Name: " + getStudentName() + " Student ID: " + getStudentID() + '\t');
+                session.sessionWriter(fw, in, i, true);
+            }
+        }
         for (int i = 0; i < session.getNumOfExams(); i++) {
             if (Objects.equals(session.exams.get(i).getExamName().toLowerCase(), name)) {
                 fw.write("Student Name: " + getStudentName() + " Student ID: " + getStudentID() + '\t');
-                session.sessionWriter(fw, in, i);
+                session.sessionWriter(fw, in, i , false);
             }
         }
     }
     class Session {
         int numOfSession;
         Vector<Exam> exams;
+        Vector<Credit> credits;
         int numOfExams;
+        int numOfCredits;
 
         Session() {
             numOfSession = 0;
             exams = new Vector<>(getNumOfExams());
+            credits = new Vector<>(getNumOfCredits());
             numOfSession = 0;
+            numOfCredits = 0;
         }
 
         public void setNumOfSession(int _numOfSession) {
@@ -93,11 +103,27 @@ class GradeBook {
             return numOfExams;
         }
 
+        public void setNumOfCredits(int _numOfCredits) {
+            numOfCredits = _numOfCredits;
+        }
+
+        public int getNumOfCredits() {
+            return numOfCredits;
+        }
         public void addExam(Exam _exam) {
             exams.add(_exam);
         }
 
+        public void addCredit(Credit _credit){
+            credits.add(_credit);
+        }
         public void sessionReader(Scanner in, FileReader fr) throws Exception {
+            setNumOfCredits(Integer.parseInt(in.nextLine()));
+            for (int i = 0; i < getNumOfCredits(); i++) {
+                Credit credit = new Credit();
+                credit.creditReader(in, fr);
+                addCredit(credit);
+            }
             setNumOfExams(Integer.parseInt(in.nextLine()));
             for (int i = 0; i < getNumOfExams(); i++) {
                 Exam exam = new Exam();
@@ -106,8 +132,12 @@ class GradeBook {
             }
         }
 
-        public void sessionWriter(FileWriter fw, Scanner in, int num) throws Exception {
-                exams.get(num).examWriter(fw, in);
+        public void sessionWriter(FileWriter fw, Scanner in, int num, boolean flag) throws Exception {
+                if (flag){
+                    credits.get(num).creditWriter(fw, in);
+                } else {
+                    exams.get(num).examWriter(fw, in);
+                }
         }
 
         class Exam {
@@ -170,6 +200,67 @@ class GradeBook {
                 fw.write(  "Teacher name: " + getTeacherName() + '\t' + "Exam result: " + getExamResult() + '\n');
             }
         }
+
+        class Credit {
+            String creditName;
+            boolean creditResult;
+            String teacherName;
+
+            Credit() {
+                creditName = null;
+                creditResult = false;
+                teacherName = null;
+            }
+
+            Credit(String _examName, boolean _examResult, String _teacherName) {
+                creditResult = _examResult;
+                creditName = _examName;
+                teacherName = _teacherName;
+            }
+
+            public void setCreditName(String _creditName) {
+                creditName = _creditName;
+            }
+
+            public String getCreditName() {
+                return this.creditName;
+            }
+
+            public void setCreditResult(boolean _creditResult) {
+                creditResult = _creditResult;
+            }
+
+            public boolean getCreditResult() {
+                return this.creditResult;
+            }
+
+            public void setTeacherName(String _teacherName) {
+                teacherName = _teacherName;
+            }
+
+            public String getTeacherName() {
+                return this.teacherName;
+            }
+
+            public void creditReader(Scanner in, FileReader fr) throws Exception {
+                String line = in.nextLine();
+                String[] words = line.split(" ");
+                String _teacherName = words[0];
+                boolean _creditResult = Objects.equals(words[1], "+");
+                StringBuilder _creditName = new StringBuilder();
+                for (int i = 2; i < words.length; i++) {
+                    _creditName.append(words[i].toLowerCase()).append(" ");
+                }
+
+                setCreditName(_creditName.toString());
+                setTeacherName(_teacherName);
+                setCreditResult(_creditResult);
+            }
+
+            public void creditWriter(FileWriter fw, Scanner in) throws Exception {
+                fw.write(  "Teacher name: " + getTeacherName() + '\t' + "Exam result: " + getCreditResult() + '\n');
+            }
+        }
     }
 }
 
@@ -188,11 +279,17 @@ public class Main {
         }
         return  maxYear;
     }
-    public static void nameOfExams(Vector <GradeBook> gradeBooks,int numOfStudent, int numOfSessions, Vector <String> namesOfExams){
+    public static void nameOfExamsAndCredits(Vector <GradeBook> gradeBooks,int numOfStudent, int numOfSessions, Vector <String> namesOfExams){
         for (int i = 0; i < numOfStudent; i++){
             GradeBook gradeBook = gradeBooks.get(i);
             if (numOfSessions <= gradeBook.getStudentYear() - 2) {
                 GradeBook.Session session = gradeBook.sessions.get(numOfSessions);
+                for (int j = 0; j < session.getNumOfCredits(); j++) {
+                    String creditName = session.credits.get(j).getCreditName().toLowerCase();
+                    if (!namesOfExams.contains(creditName)) {
+                        namesOfExams.add(session.credits.get(j).getCreditName());
+                    }
+                }
                 for (int j = 0; j < session.getNumOfExams(); j++) {
                     String examName = session.exams.get(j).getExamName().toLowerCase();
                     if (!namesOfExams.contains(examName)) {
@@ -206,7 +303,7 @@ public class Main {
         int count = 1;
         while (count <= maxYear - 1){
             Vector <String> namesOfExams = new Vector<>();
-            nameOfExams(gradeBooks, numOfStudent, count - 1, namesOfExams);
+            nameOfExamsAndCredits(gradeBooks, numOfStudent, count - 1, namesOfExams);
             fw.write("Session number: " + count + '\n');
             for (String namesOfExam : namesOfExams) {
                 String nameOfExam = namesOfExam.toLowerCase();
