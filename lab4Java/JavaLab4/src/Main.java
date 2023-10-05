@@ -258,7 +258,7 @@ class GradeBook {
             }
 
             public void creditWriter(FileWriter fw, Scanner in) throws Exception {
-                fw.write(  "Teacher name: " + getTeacherName() + '\t' + "Exam result: " + getCreditResult() + '\n');
+                fw.write(  "Teacher name: " + getTeacherName() + '\t' + "Credit result: " + getCreditResult() + '\n');
             }
         }
     }
@@ -322,35 +322,46 @@ public class Main {
             count += 1;
         }
     }
+    public static void FindingExc(int numOfStudent, Vector <GradeBook> gradeBooks, int maxYear, Vector <String> excellentStudents, int count){
+        for (int i = 0; i < numOfStudent; i++){
+            GradeBook gradeBook = gradeBooks.get(i);
+            if (gradeBook.getStudentYear() > count) {
+                GradeBook.Session session = gradeBook.sessions.get(count - 1);
+                boolean creditsIsExc = true;
+                boolean examsIsExc = true;
+                for (int j = 0; j < session.getNumOfCredits(); j++){
+                    if (!session.credits.get(j).getCreditResult()) {
+                        creditsIsExc = false;
+                        break;
+                    }
+                }
+                for (int j = 0; j < session.getNumOfExams(); j++){
+                    if (session.exams.get(j).getExamResult() < 9){
+                        examsIsExc = false;
+                        break;
+                    }
+                }
+                if (creditsIsExc && examsIsExc){
+                    excellentStudents.add(gradeBook.getStudentName());
+                }
+            }
+        }
+    }
     public static void WriterExc(Scanner in, FileWriter fw, int numOfStudent, Vector <GradeBook> gradeBooks, int maxYear) throws Exception{
         int count = 1;
         while (count < maxYear){
             fw.write("Names of student in session number " + count + ": ");
-            for (int i = 0; i < numOfStudent; i++){
-                GradeBook gradeBook = gradeBooks.get(i);
-                if (gradeBook.getStudentYear() > count) {
-                    GradeBook.Session session = gradeBook.sessions.get(count - 1);
-                    boolean creditsIsExc = true;
-                    boolean examsIsExc = true;
-                    for (int j = 0; j < session.getNumOfCredits(); j++){
-                        if (!session.credits.get(j).getCreditResult()) {
-                            creditsIsExc = false;
-                            break;
-                        }
-                    }
-                    for (int j = 0; j < session.getNumOfExams(); j++){
-                        if (session.exams.get(j).getExamResult() < 9){
-                            examsIsExc = false;
-                            break;
-                        }
-                    }
-                    if (creditsIsExc && examsIsExc){
-                        fw.write(gradeBook.getStudentName() + " ");
-                    }
+            Vector <String> excellentStudents = new Vector<>();
+            FindingExc(numOfStudent, gradeBooks, maxYear, excellentStudents, count);
+            if (!excellentStudents.isEmpty()) {
+                for (String names : excellentStudents) {
+                    fw.write(names + " ");
                 }
+                fw.write('\n');
+            } else{
+                fw.write("No one" + '\n');
             }
-            count += 1;
-            fw.write('\n');
+            count++;
         }
     }
     public static void main(String[] args) throws Exception {
