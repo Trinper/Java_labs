@@ -17,7 +17,7 @@ public class MapCollection {
 
     public static void WriterArray(Scanner in, FileWriter fw, int numOfExam, ArrayList <Exam> examsList) throws Exception {
         for (int i = 0; i < numOfExam; i++){
-            examsList.get(i).examWriterArray(fw, in);
+            examsList.get(i).examWriter(fw, in);
         }
     }
 
@@ -26,7 +26,11 @@ public class MapCollection {
             fw.write(item.getKey() + '\n');
             List <Exam> exams = item.getValue();
             for (int i = 0; i < exams.size(); i++){
-                exams.get(i).examWriterMap(fw, in);
+                Exam exam = exams.get(i);
+                exam.examNameWriter(fw, in);
+                fw.write('\t');
+                exam.examResultWriter(fw, in);
+                fw.write('\n');
             }
         }
     }

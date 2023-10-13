@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
@@ -58,11 +59,24 @@ class Exam {
         setExamResult(_examResult);
     }
 
-    public void examWriterArray(FileWriter fw, Scanner in) throws Exception {
-        fw.write(  "Teacher name: " + getTeacherName() + '\t' + "Exam result: " + getExamResult() + '\t' + "Name of exam: " + getExamName() + '\n');
+    public void teacherNameWriter(FileWriter fw, Scanner in) throws Exception {
+        fw.write("Teacher name: " + getTeacherName());
     }
 
-    public void examWriterMap(FileWriter fw, Scanner in) throws Exception {
-        fw.write(  "Exam result: " + getExamResult() + '\t' + "Name of exam: " + getExamName() + '\n');
+    public void examNameWriter(FileWriter fw, Scanner in) throws Exception {
+        fw.write("Name of exam: " + getExamName());
+    }
+
+    public void examResultWriter(FileWriter fw, Scanner in) throws Exception {
+        fw.write("Result of Exam: " + getExamResult());
+    }
+
+    public void examWriter(FileWriter fw, Scanner in) throws Exception{
+        teacherNameWriter(fw, in);
+        fw.write('\t');
+        examNameWriter(fw, in);
+        fw.write('\t');
+        examResultWriter(fw, in);
+        fw.write('\n');
     }
 }

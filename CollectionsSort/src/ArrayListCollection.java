@@ -16,7 +16,7 @@ public class ArrayListCollection {
 
     public static void Writer(Scanner in, FileWriter fw, int numOfExam, ArrayList <Exam> examsList) throws Exception {
         for (int i = 0; i < numOfExam; i++){
-            examsList.get(i).examWriterArray(fw, in);
+            examsList.get(i).examWriter(fw, in);
         }
     }
     public static void main(String[] args) throws Exception {

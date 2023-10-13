@@ -1,17 +1,17 @@
-Teacher name: Mazanik	Exam result: 6	Name of exam: calculus 
-Teacher name: Karpa	Exam result: 6	Name of exam: programming 
-Teacher name: Komrakov	Exam result: 7	Name of exam: high algebra 
-Teacher name: Karpa	Exam result: 8	Name of exam: programming 
+Teacher name: Mazanik	Name of exam: calculus 	Result of Exam: 6
+Teacher name: Karpa	Name of exam: programming 	Result of Exam: 6
+Teacher name: Komrakov	Name of exam: high algebra 	Result of Exam: 7
+Teacher name: Karpa	Name of exam: programming 	Result of Exam: 8
 
-Teacher name: Karpa	Exam result: 6	Name of exam: programming 
-Teacher name: Karpa	Exam result: 8	Name of exam: programming 
-Teacher name: Komrakov	Exam result: 7	Name of exam: high algebra 
-Teacher name: Mazanik	Exam result: 6	Name of exam: calculus 
+Teacher name: Karpa	Name of exam: programming 	Result of Exam: 6
+Teacher name: Karpa	Name of exam: programming 	Result of Exam: 8
+Teacher name: Komrakov	Name of exam: high algebra 	Result of Exam: 7
+Teacher name: Mazanik	Name of exam: calculus 	Result of Exam: 6
 
 Karpa
-Exam result: 6	Name of exam: programming 
-Exam result: 8	Name of exam: programming 
+Name of exam: programming 	Result of Exam: 6
+Name of exam: programming 	Result of Exam: 8
 Komrakov
-Exam result: 7	Name of exam: high algebra 
+Name of exam: high algebra 	Result of Exam: 7
 Mazanik
-Exam result: 6	Name of exam: calculus 
+Name of exam: calculus 	Result of Exam: 6
