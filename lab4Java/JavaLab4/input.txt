@@ -1,28 +1,38 @@
 3
 Frolov 2223115 4
+2
+Martinenko + Calculus
+Grekova + high algebra
 3
 Mazanik 6 Calculus
 Komrakov 7 High algebra
 Karpa 6 Programming
+1
+Karpa + Industrial programming
 2
-Mazanik 4 Calculus
-Pazura 8 Industrial programming
+Mazanik 9 Calculus
+Pazura 9 Industrial programming
+0
 1
 Semenchenko 10 operation systems
 Kadakov 2223108 3
+0
 3
 Lebedeva 8 History
 Komrakov 2 hiGh aLgebra
 Karpa 6 programming
+0
 2
 Mazanik 4 Calculus
 Volochkova 5 Math logic
 Katok 2222712 3
+0
 4
 Vaskovsky 8 Calculus
 Razmislovich 7 high algebra
 Lebedeva 8 HiStory
 Kazantseva 10 programming
+0
 2
 Vaskovsky 9 Calculus
 Razmislovich 9 linear algebra
