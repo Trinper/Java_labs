@@ -4,38 +4,40 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 public class Concert {
-    private String nameOfGift;
-    private int priceOfGift;
+    private String nameOfConcert;
+    private int priceOfConcert;
 
-    public Concert(String nameOfGift, int priceOfGift) {
-        this.nameOfGift = nameOfGift;
-        this.priceOfGift = priceOfGift;
+    public Concert(String nameOfConcert, int priceOfConcert) {
+        this.nameOfConcert = nameOfConcert;
+        this.priceOfConcert = priceOfConcert;
     }
 
     public Concert() {
-        nameOfGift = null;
-        priceOfGift = 0;
+        nameOfConcert = null;
+        priceOfConcert = 0;
     }
 
-    public String getNameOfGift() {
-        return nameOfGift;
+    public String getNameOfConcert() {
+        return nameOfConcert;
     }
 
-    public void setNameOfGift(String nameOfGift) {
-        this.nameOfGift = nameOfGift;
+    public void setNameOfConcert(String nameOfConcert) {
+        this.nameOfConcert = nameOfConcert;
     }
 
-    public int getPriceOfGift() {
-        return priceOfGift;
+    public int getPriceOfConcert() {
+        return priceOfConcert;
     }
 
-    public void setPriceOfGift(int priceOfGift) {
-        this.priceOfGift = priceOfGift;
+    public void setPriceOfConcert(int priceOfConcert) {
+        this.priceOfConcert = priceOfConcert;
     }
 
-    public void GiftReader() throws Exception {
-        FileReader fr = new FileReader("input.txt");
-        Scanner in = new Scanner(fr);
+    public void concertReader(Scanner in, FileReader fr) throws Exception {
+        String str = in.nextLine();
+        String[] words = str.split(" ");
+        setNameOfConcert(words[0]);
+        setPriceOfConcert(Integer.parseInt(words[1]));
     }
 
 }

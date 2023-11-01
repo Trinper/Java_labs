@@ -33,9 +33,10 @@ public class Gift {
         this.priceOfGift = priceOfGift;
     }
 
-    public void GiftReader() throws Exception {
-        FileReader fr = new FileReader("input.txt");
-        Scanner in = new Scanner(fr);
-
+    public void giftReader(Scanner in, FileReader fr) throws Exception {
+        String str = in.nextLine();
+        String[] words = str.split(" ");
+        setNameOfGift(words[0]);
+        setPriceOfGift(Integer.parseInt(words[1]));
     }
 }
