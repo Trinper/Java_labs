@@ -43,6 +43,10 @@ public class Manufacturer {
         this.concerts.add(concert);
     }
 
+    public Vector<Concert> getConcerts(){
+        return concerts;
+    }
+
     public void manufacturerReader(Scanner in, FileReader fr) throws Exception{
         setNameOfManufacturer(in.nextLine());
         int numOfGifts = Integer.parseInt(in.nextLine());

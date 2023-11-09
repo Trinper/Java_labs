@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
 <VBox alignment="CENTER" prefHeight="360.0" prefWidth="500.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.newyeargreetings.Controller">
     <padding>
@@ -9,14 +8,8 @@
     </padding>
     <HBox alignment="CENTER">
         <children>
-         <StackPane prefHeight="150.0" prefWidth="200.0">
-            <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dcf2" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-               <FlowPane fx:id="root" onMouseClicked="#addManufacturers" prefHeight="200.0" prefWidth="200.0" />
-            </children>
-         </StackPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b8dcff" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dcf2" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+
+         <FlowPane fx:id="rootConcert" orientation="VERTICAL" prefHeight="200.0" prefWidth="120.0" />
         </children>
     </HBox>
 </VBox>
