@@ -7,9 +7,13 @@
     <padding>
 
     </padding>
+   <CheckBox fx:id = "regularCustomer" mnemonicParsing="false"  text="Regular customer" />
     <HBox alignment="CENTER">
       <ComboBox fx:id="manufacturersBox" onAction="#addManufacturers" prefWidth="150.0" />
+      <ComboBox fx:id="giftsBox" prefWidth="150.0" />
+      <ComboBox fx:id="concertsBox" onAction="#initialize" prefWidth="150.0" />
     </HBox>
-   <ComboBox fx:id="concertsBox"  prefWidth="150.0" />
-   <ComboBox fx:id="giftsBox"  prefWidth="150.0" />
+    <Label fx:id="costGift" textAlignment="JUSTIFY" />
+   <Label fx:id="costConcert" textAlignment="JUSTIFY" />
+    <Label fx:id="cost" textAlignment="JUSTIFY" />
 </VBox>
