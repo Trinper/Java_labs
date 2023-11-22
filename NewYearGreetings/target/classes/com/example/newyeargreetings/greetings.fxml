@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox alignment="CENTER" prefHeight="360.0" prefWidth="500.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.newyeargreetings.Controller">
@@ -7,9 +8,8 @@
 
     </padding>
     <HBox alignment="CENTER">
-        <children>
-
-         <FlowPane fx:id="rootConcert" orientation="VERTICAL" prefHeight="200.0" prefWidth="120.0" />
-        </children>
+      <ComboBox fx:id="manufacturersBox" onAction="#addManufacturers" prefWidth="150.0" />
     </HBox>
+   <ComboBox fx:id="concertsBox"  prefWidth="150.0" />
+   <ComboBox fx:id="giftsBox"  prefWidth="150.0" />
 </VBox>

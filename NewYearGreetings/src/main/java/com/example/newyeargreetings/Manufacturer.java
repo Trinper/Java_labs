@@ -46,6 +46,7 @@ public class Manufacturer {
     public Vector<Concert> getConcerts(){
         return concerts;
     }
+    public Vector<Gift> getGifts(){ return gifts; }
 
     public void manufacturerReader(Scanner in, FileReader fr) throws Exception{
         setNameOfManufacturer(in.nextLine());

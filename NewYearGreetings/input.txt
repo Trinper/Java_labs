@@ -1,13 +1,25 @@
 4
 Komunarka
-0
-0
+2
+Chokolatka 5
+Konfeta 1
+2
+Leps 0
+Meladze 1
 Spartak
-0
-0
+1
+Konfeta 2
+1
+MorgenStarn 10
 Chervony Peshevik
-0
-0
+2
+Zefir 2
+Marmelad 4
+2
+Kobzon 1000
+TravisScoot 1
 John
-0
-0
+1
+Jonh 10
+1
+Jonh 12

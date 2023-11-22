@@ -1,5 +1,7 @@
 package com.example.newyeargreetings;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -10,61 +12,89 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.shape.Rectangle;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
-import java.nio.BufferUnderflowException;
 import java.util.Objects;
-import java.util.Scanner;
 import java.util.Vector;
 
 public class Controller {
 
     //private boolean start = true;
-    private Model model;
+    private Model model = new Model();
+    private ObservableList<String> langs = FXCollections.observableArrayList();
+    private ObservableList<String> langsConcerts = FXCollections.observableArrayList();
+    private ObservableList<String> langsGifts = FXCollections.observableArrayList();
 
     public void setModel(Model model){
         this.model = model;
     }
 
     @FXML
-    private FlowPane root;
-    @FXML
-    private FlowPane rootConcert = new FlowPane(Orientation.VERTICAL);
+    private ComboBox<String> manufacturersBox = new ComboBox<>();
 
-    private final ToggleGroup group = new ToggleGroup();
+    @FXML
+    private ComboBox<String> concertsBox = new ComboBox<>();
+    @FXML
+    private ComboBox<String> giftsBox = new ComboBox<>();
+
+    private String selectedManufacturer = null;
 
     public Controller() throws Exception {
-        model = new Model();
-        root = new FlowPane();
-        root.setPadding(new Insets(10));
+    }
+
+    @FXML
+    private void initialize() throws Exception {
         addManufacturers();
-        /*RadioButton selection = (RadioButton) group.getSelectedToggle();
-        for (Manufacturer manufacturer: model.manufacturers){
-            if (Objects.equals(manufacturer.getNameOfManufacturer(), selection.getText())){
-                addConcerts(manufacturer);
-            }
-        }*/
+       manufacturersBox.setOnAction((event) -> {
+           selectedManufacturer = manufacturersBox.getSelectionModel().getSelectedItem();
+           try {
+               addConcerts();
+               addGifts();
+           } catch (Exception e) {
+               throw new RuntimeException(e);
+           }
+       });
     }
 
     @FXML
-    public void addManufacturers() throws Exception{
+   public void addManufacturers() throws Exception{
+
         for (Manufacturer manufacturer : model.manufacturers) {
-            System.out.println(1);
-            RadioButton btn = new RadioButton(manufacturer.getNameOfManufacturer());
-            btn.setToggleGroup(group);
-            root.getChildren().add(btn);
+            langs.add(manufacturer.getNameOfManufacturer());
         }
-
+        manufacturersBox.setValue("Select Manufacturer");
+        manufacturersBox.setItems(langs);
     }
 
     @FXML
-    public void addConcerts(Manufacturer manufacturer) throws Exception{
+    public void addConcerts() throws Exception{
+        langsConcerts.clear();
+        Manufacturer manufacturer = new Manufacturer();
+        for (var manufacturer_ : model.manufacturers){
+            if (Objects.equals(manufacturer_.getNameOfManufacturer(), selectedManufacturer)){
+                manufacturer = manufacturer_;
+            }
+        }
         Vector <Concert> concerts = manufacturer.getConcerts();
         for (Concert concert : concerts) {
-            CheckBox checkBox = new CheckBox(concert.getNameOfConcert());
-            rootConcert.getChildren().add(checkBox);
+            langsConcerts.add(concert.getNameOfConcert());
         }
-        rootConcert.setPadding(new Insets(10));
+        concertsBox.setValue("Select Concert");
+        concertsBox.setItems(langsConcerts);
+    }
+
+    @FXML
+    public void addGifts() throws Exception{
+        langsGifts.clear();
+        Manufacturer manufacturer = new Manufacturer();
+        for (var manufacturer_ : model.manufacturers){
+            if (Objects.equals(manufacturer_.getNameOfManufacturer(), selectedManufacturer)){
+                manufacturer = manufacturer_;
+            }
+        }
+        Vector <Gift> gifts = manufacturer.getGifts();
+        for (Gift gift : gifts) {
+            langsGifts.add(gift.getNameOfGift());
+        }
+        giftsBox.setValue("Select Gift");
+        giftsBox.setItems(langsGifts);
     }
 }
