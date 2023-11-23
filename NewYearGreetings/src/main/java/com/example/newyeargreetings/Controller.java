@@ -52,15 +52,14 @@ public class Controller {
     private String selectedGift = null;
     private int costOfSelectedConcert;
     private int costOfSelectedGift;
-
     private boolean regular;
     public Controller() throws Exception {
     }
 
     @FXML
     private void initialize() throws Exception {
-
         addManufacturers();
+
         manufacturersBox.setOnAction((event) -> {
            selectedManufacturer = manufacturersBox.getSelectionModel().getSelectedItem();
            try {
@@ -93,7 +92,7 @@ public class Controller {
     }
 
     public void updateCost(){
-        double finalCost = (regular ? costOfSelectedConcert + costOfSelectedGift * 0.9 : costOfSelectedConcert + costOfSelectedGift);
+        double finalCost = (regular ? (costOfSelectedConcert + costOfSelectedGift) * 0.9: costOfSelectedConcert + costOfSelectedGift);
         cost.setText("Final cost: " + finalCost);
     }
 
