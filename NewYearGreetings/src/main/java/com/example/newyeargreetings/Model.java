@@ -24,7 +24,7 @@ public class Model {
             manufacturers.add(manufacturer);
         }*/
         try {
-            String url = "jdbc:mysql://localhost/manufacturers?serverTimezone=Europe/Moscow&useSSL=false";
+            String url = "jdbc:mysql://localhost/manufacturers";
             String username = "root";
             String password = "1111";
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
@@ -59,6 +59,7 @@ public class Model {
         catch (Exception ex){
             System.out.println("Connection failed...");
             System.out.println(ex);
+            System.exit(123);
         }
     }
 }

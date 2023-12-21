@@ -1,4 +1,0 @@
-The simplest calculator written in Java using the JavaFX library. 
-A controller describing the logic of scene objects, 
-a model describing arithmetic operations, 
-and a mine creating a scene are implemented

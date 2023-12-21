@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -23,7 +23,16 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="e6dc1899-9cdb-4906-9f80-98c5faa7a963" object-ref="schemas/manufacturers/tables/manufacturer" />
+    </open-files>
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="e6dc1899-9cdb-4906-9f80-98c5faa7a963" dataset="manufacturers.manufacturer" active-filter-id="EMPTY_FILTER">
+      <filter id="da0ce2fc-5742-4cab-81f6-9f675874d7fc" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="nameOfConcert" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -136,7 +145,7 @@
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="8.0" />
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />
